@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebAR Demo</title>
+    <meta name="description" content="%UNITY_CUSTOM_DESCRIPTION%" />
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>
+      UnityLoader.compatibilityCheck = function (
+        unityInstance,
+        onsuccess,
+        onerror
+      ) {
+        if (!UnityLoader.SystemInfo.hasWebGL) {
+          onerror();
+        } else {
+          onsuccess();
+        }
+      };
+      var unityInstance = UnityLoader.instantiate(
+        'unityContainer',
+        '%UNITY_WEBGL_BUILD_URL%',
+        { onProgress: UnityProgress }
+      );
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content" style="width: 100%; height: 100%">
+      <div id="unityContainer" style="width: 100%; height: 100%"></div>
+      <button
+        class="btn enterar"
+        id="enterar"
+        value="Enter AR"
+        disabled
+      ></button>
+    </div>
+    <script>
+      let enterARButton = document.getElementById('enterar');
+
+      document.addEventListener(
+        'onARSupportedCheck',
+        function (event) {
+          enterARButton.disabled = !event.detail.supported;
+        },
+        false
+      );
+
+      enterARButton.addEventListener(
+        'click',
+        function (event) {
+          document.dispatchEvent(new CustomEvent('toggleAR', {}));
+        },
+        false
+      );
+
+      document.addEventListener(
+        'UnityLoaded',
+        function (event) {
+          setTimeout(() => {
+            if (enterARButton.disabled) {
+              enterARButton.innerText = 'AR not supported';
+            } else {
+              enterARButton.innerText = 'click to enter ar';
+            }
+            enterARButton.style.visibility = 'visible';
+          }, 2500);
+        },
+        false
+      );
+    </script>
+    <script src="gl-matrix-min.js"></script>
+    <script src="webxr.js"></script>
+  </body>
+</html>
