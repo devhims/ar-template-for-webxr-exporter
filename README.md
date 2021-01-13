@@ -21,5 +21,6 @@ Currently, WebXR library is supported only on the WebXR Viewer browser by Mozill
 
 For compatible devices:
 ![compatible](./Screenshots/compatible.jpg)
+
 If the device isn't compatible:
-![incompatible](./Screenshots/incompatible.jpg)
+![incompatible](./Screenshots/incompatible.jpeg)
