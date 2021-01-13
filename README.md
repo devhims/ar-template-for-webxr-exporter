@@ -8,7 +8,10 @@ Anyone using [Oren's](https://github.com/De-Panther/unity-webxr-export) webxr-ex
 
 ### How to use:
 1. Clone or download the repo.
-2. If you've an existing WebXR project made with webxr exporter, just paste the `WebARFullView` folder in the `WebGL Templates` folder in your `Assets`. 
+2. If you've an existing WebXR project made with webxr exporter:
+- Paste the `WebARFullView` folder in the `WebGL Templates` folder in your `Assets`. 
+- Change the build platform to WebGL
+- Select the template under resolution and presentation in the player settings for WebGL. If the template is not visible, just press play in the editor to load it.  
 3. Else, if you're starting fresh, just load the Sample Project that comes with the repo in Unity. The template is included in the project.  
 
 ### Tested on:
